@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/entity/entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entity/player.gd" type="Script" id=2]
-[ext_resource path="res://assets/entity/player/Char_idle_down.png" type="Texture" id=4]
 
 [node name="player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -10,5 +9,4 @@ script = ExtResource( 2 )
 [node name="sprite_3d" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 pixel_size = 0.0626
-texture = ExtResource( 4 )
 hframes = 6

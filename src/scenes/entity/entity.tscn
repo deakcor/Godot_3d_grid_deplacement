@@ -22,5 +22,10 @@ one_shot = true
 material_override = SubResource( 1 )
 pixel_size = 0.0313
 texture = ExtResource( 2 )
+
+[node name="timer_anim" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 [connection signal="tween_completed" from="tween" to="." method="_on_tween_tween_completed"]
+[connection signal="timeout" from="timer_anim" to="." method="_on_timer_anim_timeout"]
