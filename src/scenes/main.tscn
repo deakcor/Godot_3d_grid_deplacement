@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/main.gd" type="Script" id=1]
+[ext_resource path="res://scenes/entity/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/utils/camera3d.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.239216, 0.184314, 0.184314, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 5 )
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="MeshLibrary" id=3]
+item/0/name = "ground"
+item/0/mesh = SubResource( 2 )
+item/0/mesh_transform = null
+item/0/shapes = [  ]
+item/0/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+item/1/name = "ice"
+item/1/mesh = SubResource( 4 )
+item/1/mesh_transform = null
+item/1/shapes = [  ]
+item/1/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="main" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="grid_map" type="GridMap" parent="."]
+mesh_library = SubResource( 3 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 1, 3, 0, -1610612735, 4, 0, 1, 5, 0, 1, 6, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 65540, 0, 0, 131070, 0, 0, 0, 1, 536870912, 1, 1, 0, 2, 1, 1, 3, 1, 1, 4, 1, 1, 5, 1, 1, 6, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, -1073741824, 5, 2, 0, 6, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 0, 65532, 0, 1, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, -1610612736, 4, 65533, 0, 5, 65533, 1073741824, 6, 65533, 1073741824, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, -1610612736, 2, 65534, 1, 3, 65534, 1073741825, 4, 65534, 1, 5, 65534, 536870913, 6, 65534, 536870912, 65531, 65534, 0, 65532, 65534, 0, 65533, 65534, -1610612736, 65534, 65534, 0, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 536870913, 3, 65535, 536870913, 4, 65535, 1, 5, 65535, 1, 6, 65535, 1073741824, 65532, 65535, -1610612736, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.814669, 0 )
+
+[node name="directional_light" type="DirectionalLight" parent="."]
+transform = Transform( 0.996487, -0.0345059, -0.0763125, 0.0837385, 0.394638, 0.915013, -0.00145752, -0.918188, 0.396141, 0, 2.51184, 0 )
+shadow_enabled = true
+
+[node name="cam_cont" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0 )
+
+[node name="camera" parent="cam_cont" instance=ExtResource( 3 )]
