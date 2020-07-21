@@ -44,5 +44,12 @@ func move_entity(entity:Entity,direction:Vector3):
 #			if succes:
 #				gridmap.set_cell_item(target.x,target.y,target.z,1)
 
-func _process(delta):
-	$cam_cont.translation=lerp($cam_cont.translation,player.translation,delta*10)
+func _physics_process(delta):
+	#$cam_cont.translation=lerp($cam_cont.translation,player.translation,delta*10)
+	var pp=player.translation*1000
+	pp=pp-Vector3(fmod(pp.x,62.5),fmod(pp.y,62.5),fmod(pp.z,62.5))
+	#player.translation=pp/1000
+	$cam_cont.translation=pp/1000
+	player.get_sprite().global_transform.origin=$cam_cont.global_transform.origin
+	player.get_sprite().translation.y=0.5
+	pass

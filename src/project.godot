@@ -30,7 +30,8 @@ global="*res://scripts/global.gd"
 
 [display]
 
-window/size/height=576
+window/size/width=256
+window/size/height=144
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

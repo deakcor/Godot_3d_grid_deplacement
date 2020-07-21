@@ -96,6 +96,9 @@ func update_sprite(dir=direction,s=state):
 	print("update")
 	sprite.texture=asset_by_direction[s][dir]
 
+func get_sprite():
+	return sprite
+
 func _on_timer_timeout():
 	print("timer out")
 	require_movement()
